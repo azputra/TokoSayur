@@ -6,19 +6,19 @@ class UserController {
     static getUsersAll(req, res) {
         User.findAll({})
         .then(users => {
-            res.render('users', {
+            res.render('./adminForm/users', {
                 userData : users
             })
         })
         .catch(err => {
-            res.render('users', {
+            res.render('users/usersError', {
                 message: err.message
             })
         })
     }
 
     static getUsersAdd(req, res) {
-        res.render('userAdd')
+        res.render('signUp')
     }
 
     static postUsersAdd(req, res) {
@@ -36,10 +36,12 @@ class UserController {
             email
         })
         .then(() => {
-            res.render('')
+            res.redirect('/users/add')
         })
         .catch(err => {
-            res.send(err.message)
+            res.render('users/usersError', {
+                message: err.message
+            })
         })
     }
 
@@ -51,7 +53,9 @@ class UserController {
             res.render('')
         })
         .catch(err => {
-            res.send(err.message)
+            res.render('users/usersError', {
+                message: err.message
+            })
         })
     }
 
@@ -74,7 +78,9 @@ class UserController {
             res.redirect('/users')
         })
         .catch(err => {
-            res.send(err.message)
+            res.render('users/usersError', {
+                message: err.message
+            })
         })
     }
 
@@ -90,7 +96,9 @@ class UserController {
             res.redirect('/users')
         })
         .catch(err => {
-            res.send(err.message)
+            res.render('users/usersError', {
+                message: err.message
+            })
         })
     }
 }

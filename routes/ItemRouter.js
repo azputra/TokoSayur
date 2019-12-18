@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router();
 const ItemController = require('../controllers/ItemController');
 
-router.get('/', ItemController.getItemsAll);
+router.get('/admin', ItemController.getItemsAll);
 router.get('/add', ItemController.getItemsAdd);
 router.post('/add', ItemController.postItemsAdd);
 router.get('/edit/:id', ItemController.getItemsEdit);

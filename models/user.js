@@ -1,7 +1,8 @@
 'use strict';
 
-const generateSalt = require('../helpers/generateSalt')
-const generateHashPassword = require('../helpers/generateHashPassword')
+const generateSalt = require('../helpers/generateSalt');
+const generateHashPassword = require('../helpers/generateHashPassword');
+const sendMail = require('../helpers/sendMail');
 
 module.exports = (sequelize, DataTypes) => {
   const Sequelize = sequelize.Sequelize
@@ -25,7 +26,12 @@ module.exports = (sequelize, DataTypes) => {
          let randomNumber = Math.floor(Math.random() * 1000) + 1;
          user.username = user.firstname + user.lastname + randomNumber;
       },
-
+      afterCreate: (user) => {
+        let email = user.email
+        let message = `Hello ${user.firstname} ${user.lastname}, your username is '${user.username}'.
+Welcome to Toko Sayur. May you have enjoyable life.`
+        sendMail(email, message)
+      }
     },
     sequelize
   });
