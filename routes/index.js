@@ -1,13 +1,11 @@
 "use strict"
 
-const express = require('express')
-const router = require('express').Router()
+const ItemRouter = require('./ItemRouter');
+const UserRouter = require('./UserRouter');
+const OrderRouter = require('./OrderRouter');
 
-router.use(express.json()) // for parsing application/json
-router.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
-
-router.get("/", (req, res) => {
-    res.render("index")
-})
-
-module.exports = router
+module.exports = {
+    ItemRouter,
+    UserRouter,
+    OrderRouter
+}
