@@ -43,9 +43,15 @@ class ItemController {
         const ItemId = req.params.id;
 
         Item.findByPk(ItemId)
-            .then(item => {
-                res.render('')
-            })
+
+        .then(item => {
+            res.render('')
+        })
+        .catch(err => {
+            res.send(err.message)
+        })
+
+
     }
 
     static postItemEdit(req, res) {
@@ -71,7 +77,7 @@ class ItemController {
             })
     }
 
-    static getItemDelete() {
+    static getItemsDelete(req, res) {
         const ItemId = req.params.id;
 
         Item.destroy({
@@ -87,9 +93,6 @@ class ItemController {
             })
     }
 
-    static findOne() {
-
-    }
 }
 
 module.exports = ItemController;

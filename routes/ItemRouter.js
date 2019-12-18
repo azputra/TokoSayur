@@ -9,7 +9,7 @@ router.get('/add', ItemController.getItemsAdd);
 router.post('/add', ItemController.postItemsAdd);
 router.get('/edit/:id', ItemController.getItemsEdit);
 router.post('/edit/:id', ItemController.postItemsAdd);
-router.get('/delete/:id', ItemController.getItemDelete);
+router.get('/delete/:id', ItemController.getItemsDelete);
 
 
 module.exports = router;
