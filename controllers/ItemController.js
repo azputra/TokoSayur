@@ -6,7 +6,7 @@ class ItemController {
     static getItemsAll(req, res) {
         Item.findAll({})
         .then(items => {
-            res.render('./adminForm/items', {
+            res.render('./adminForm/tableItem', {
                 itemData: items
             })
         })

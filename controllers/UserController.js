@@ -6,14 +6,15 @@ class UserController {
     static getUsersAll(req, res) {
         User.findAll({})
         .then(users => {
-            res.render('./adminForm/users', {
-                userData : users
+            res.render('./adminForm/tableUser', {
+                users
             })
         })
         .catch(err => {
             res.render('users/usersError', {
                 message: err.message
             })
+        })
     }
 
     static getUsersAdd(req, res) {
