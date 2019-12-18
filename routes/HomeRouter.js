@@ -7,8 +7,8 @@ router.get('/', (req, res) => {
     res.render('index')
 })
 
-router.get('/users/add', (req, res) => {
-    res.render('signUp')
-})
+// router.get('/home', (req, res) => {
+//     res.render('homeLogin')
+// })
 
 module.exports = router;
