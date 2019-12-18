@@ -18,7 +18,7 @@ class UserController {
     }
 
     static getUsersAdd(req, res) {
-        res.render('signUp')
+        res.render('users/signUp')
     }
 
     static postUsersAdd(req, res) {
