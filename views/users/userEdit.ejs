@@ -9,28 +9,46 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/9c97b4f45c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="/style.css">
 
     <title>Hello, world!</title>
+    <style>
+        .linkUser:hover {
+            color: rgba(255, 255, 255, .75) !important;
+        }
+    </style>
 </head>
 
 <body>
     <%-include('./partials/navBarLogin.ejs')%>
     <button method="POST" action="">
         <div class="form-group">
-            <label for="itemName">Name</label>
-            <input type="text" class="form-control" name="itemName" aria-describedby="firstnameHelp"
-                placeholder="<%=items.itemName%>">
+            <label for="firstname">Firstname</label>
+            <input type="text" class="form-control" name="firstname" aria-describedby="firstnameHelp"
+                placeholder="<%=user.firstname%>">
         </div>
         <div class="form-group">
-            <label for="price">Price</label>
-            <input type="number" class="form-control" name="price" placeholder="<%=items.price%>">
+            <label for="lastname">Lastname</label>
+            <input type="text" class="form-control" name="lastname" aria-describedby="lastnameHelp"
+                placeholder="<%=user.lastname%>">
         </div>
         <div class="form-group">
-            <label for="qtyName">Quantity</label>
-            <input type="number" class="form-control" name="qty" aria-describedby="qtyHelp"
-                placeholder="<%=items.qty%>">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" name="username" aria-describedby="usernameHelp"
+                placeholder="<%=user.username%>">
         </div>
-        <button type="submit" class="btn btn-primary">Edit Item</button>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="text" class="form-control" name="password" aria-describedby="passwordHelp"
+                placeholder="<%=user.password%>">
+        </div>
+        <div class="form-group">
+            <label for="email">email</label>
+            <input type="text" class="form-control" name="email" aria-describedby="emailHelp"
+                placeholder="<%=user.email%>">
+        </div>
+        <button type="submit" class="btn btn-primary">Edit Data</button>
     </button>
 
     <!-- Optional JavaScript -->
