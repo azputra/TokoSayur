@@ -13,13 +13,6 @@
 </head>
 
 <body>
-
-    <style>
-        .linkUser:hover {
-            color: rgba(255, 255, 255, .75) !important;
-        }
-    </style>
-
     <header>
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
             <div class="collapse navbar-collapse" id="navbarsExample03">
@@ -49,36 +42,34 @@
         <br>
         <center>
             <h5>
-                <a href="/items/add">Add Item</a>
+                <a href="/items/admin">Data Item</a>
             </h5>
         </center>
         <br>
-        <table class="table table-hover table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Item Name</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">qty</th>
-                    <th scope="col">Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <%  items.forEach(item => {%>
-                <tr>
-                    <td><%= item.id%></td>
-                    <td><%= item.itemName%></td>
-                    <td><%= item.price%></td>
-                    <td><%= item.qty%></td>
-                    <td><a href="/items/edit/<%=item.id%>">edit</a> |
-                        <a href="/items/delete/<%=item.id%>" onclick="return confirm('Delete this item?')">delete</a>
-                    </td>
-                </tr>
-                <%})%>
-            </tbody>
-        </table>
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col">
+                    <form method="POST" action="">
+                        <div class="form-group">
+                            <label for="itemName">Name</label>
+                            <input type="text" class="form-control" name="itemName" aria-describedby="firstnameHelp"
+                                placeholder="<%=item.itemName%>">
+                        </div>
+                        <div class="form-group">
+                            <label for="price">Price</label>
+                            <input type="number" class="form-control" name="price" placeholder="<%=item.price%>">
+                        </div>
+                        <div class="form-group">
+                            <label for="qtyName">Quantity</label>
+                            <input type="number" class="form-control" name="qty" aria-describedby="qtyHelp"
+                                placeholder="<%=item.qty%>">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Edit Item</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"

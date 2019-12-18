@@ -8,7 +8,7 @@ router.get('/admin', ItemController.getItemsAll);
 router.get('/add', ItemController.getItemsAdd);
 router.post('/add', ItemController.postItemsAdd);
 router.get('/edit/:id', ItemController.getItemsEdit);
-router.post('/edit/:id', ItemController.postItemsAdd);
+router.post('/edit/:id', ItemController.postItemsEdit);
 router.get('/delete/:id', ItemController.getItemsDelete);
 
 

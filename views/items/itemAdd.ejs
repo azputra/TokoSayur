@@ -9,36 +9,73 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/9c97b4f45c.js" crossorigin="anonymous"></script>
-
-    <title>Hello, world!</title>
+    <title>Hello!</title>
 </head>
 
 <body>
-    <%-include('./partials/navBarLogin.ejs')%>
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col">
-                <form action="/products" method="POST">
-                    <div class="form-group">
-                        <label for="itemName">Name</label>
-                        <input type="text" class="form-control" name="itemName" aria-describedby="itemHelp">
-                    </div>
-                    <div class="form-group">
-                        <label for="price">Price</label>
-                        <input type="number" class="form-control" name="price" aria-describedby="priceHelp">
-                    </div>
-                    <div class="form-group">
-                        <label for="qtyName">Quantity</label>
-                        <input type="number" class="form-control" name="qty" aria-describedby="qtyHelp">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
+
+    <style>
+        .linkUser:hover {
+            color: rgba(255, 255, 255, .75) !important;
+        }
+    </style>
+
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+            <div class="collapse navbar-collapse" id="navbarsExample03">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/users/admin">Users<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/items/admin">Items<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <br>
+        <center>
+            <h1>Data Items</h1>
+        </center>
+        <br>
+        <center>
+            <h5>
+                <a href="/items/admin">Data Item</a>
+            </h5>
+        </center>
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col">
+                    <form action="" method="POST">
+                        <div class="form-group">
+                            <label for="itemName">Name</label>
+                            <input type="text" class="form-control" name="itemName" aria-describedby="itemHelp">
+                        </div>
+                        <div class="form-group">
+                            <label for="price">Price</label>
+                            <input type="number" class="form-control" name="price" aria-describedby="priceHelp">
+                        </div>
+                        <div class="form-group">
+                            <label for="qtyName">Quantity</label>
+                            <input type="number" class="form-control" name="qty" aria-describedby="qtyHelp">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>
