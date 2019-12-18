@@ -5,15 +5,14 @@ const User = require('../models').User;
 class UserController {
     static getUsersAll(req, res) {
         User.findAll({})
-            .then(users => {
-                res.render('users', {
-                    userData: users
-                })
+        .then(users => {
+            res.render('./adminForm/users', {
+                userData : users
             })
-            .catch(err => {
-                res.render('users', {
-                    message: err.message
-                })
+        })
+        .catch(err => {
+            res.render('users/usersError', {
+                message: err.message
             })
     }
 
@@ -35,24 +34,28 @@ class UserController {
             role,
             email
         })
-            .then(() => {
-                res.redirect('/users/add')
+        .then(() => {
+            res.redirect('/users/add')
+        })
+        .catch(err => {
+            res.render('users/usersError', {
+                message: err.message
             })
-            .catch(err => {
-                res.send(err.message)
-            })
+        })
     }
 
     static getUsersEdit(req, res) {
         const userId = req.params.id;
 
         user.findByPk(userId)
-            .then(user => {
-                res.render('')
+        .then(user => {
+            res.render('')
+        })
+        .catch(err => {
+            res.render('users/usersError', {
+                message: err.message
             })
-            .catch(err => {
-                res.send(err.message)
-            })
+        })
     }
 
     static postUsersEdit(req, res) {
@@ -70,12 +73,14 @@ class UserController {
                 id: userid
             }
         })
-            .then(() => {
-                res.redirect('/users')
+        .then(() => {
+            res.redirect('/users')
+        })
+        .catch(err => {
+            res.render('users/usersError', {
+                message: err.message
             })
-            .catch(err => {
-                res.send(err.message)
-            })
+        })
     }
 
     static getUsersDelete(req, res) {
@@ -86,12 +91,14 @@ class UserController {
                 id: userId
             }
         })
-            .then(() => {
-                res.redirect('/users')
+        .then(() => {
+            res.redirect('/users')
+        })
+        .catch(err => {
+            res.render('users/usersError', {
+                message: err.message
             })
-            .catch(err => {
-                res.send(err.message)
-            })
+        })
     }
 }
 

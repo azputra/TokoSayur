@@ -5,16 +5,16 @@ const Item = require('../models').Item;
 class ItemController {
     static getItemsAll(req, res) {
         Item.findAll({})
-            .then(items => {
-                res.render('items', {
-                    itemData: items
-                })
+        .then(items => {
+            res.render('./adminForm/items', {
+                itemData: items
             })
-            .catch(err => {
-                res.render('items', {
-                    message: err.message
-                })
+        })
+        .catch(err => {
+            res.render('items/itemsError', {
+                message: err.message
             })
+        })
     }
 
     static getItemsAdd(req, res) {
@@ -31,27 +31,28 @@ class ItemController {
             price,
             quantity
         })
-            .then(() => {
+        .then(() => {
                 res.redirect('/items/add')
+         })
+        .catch(err => {
+            res.render('items/itemsError', {
+                message: err.message
             })
-            .catch(err => {
-                res.send(err.message)
-            })
+        })
     }
 
     static getItemsEdit(req, res) {
         const ItemId = req.params.id;
 
         Item.findByPk(ItemId)
-
-            .then(item => {
-                res.render('')
+        .then(item => {
+            res.render('')
+        })
+        .catch(err => {
+            res.render('items/itemsError', {
+                message: err.message
             })
-            .catch(err => {
-                res.send(err.message)
-            })
-
-
+        })
     }
 
     static postItemEdit(req, res) {
@@ -69,12 +70,14 @@ class ItemController {
                 id: Itemid
             }
         })
-            .then(() => {
-                res.redirect('/items')
+        .then(() => {
+            res.redirect('/items')
+        })
+        .catch(err => {
+            res.render('items/itemsError', {
+                message: err.message
             })
-            .catch(err => {
-                res.send(err.message)
-            })
+        })
     }
 
     static getItemsDelete(req, res) {
@@ -85,12 +88,14 @@ class ItemController {
                 id: ItemId
             }
         })
-            .then(() => {
-                res.redirect('/items')
+        .then(() => {
+            res.redirect('/items')
+        })
+        .catch(err => {
+            res.render('items/itemsError', {
+                message: err.message
             })
-            .catch(err => {
-                res.send(err.message)
-            })
+        })
     }
 
 }
