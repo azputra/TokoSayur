@@ -14,7 +14,6 @@ class UserController {
             res.render('users/usersError', {
                 message: err.message
             })
-        })
     }
 
     static getUsersAdd(req, res) {
@@ -63,8 +62,8 @@ class UserController {
         const userId = req.params.id;
         let update = {};
 
-        for(let key in req.body) {
-            if(req.body[key].length > 0) {
+        for (let key in req.body) {
+            if (req.body[key].length > 0) {
                 update[key] = req.body[key]
             }
         }

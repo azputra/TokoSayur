@@ -18,7 +18,7 @@ class ItemController {
     }
 
     static getItemsAdd(req, res) {
-        res.render('productAdd')
+        res.render('itemAdd')
     }
 
     static postItemsAdd(req, res) {
@@ -32,8 +32,8 @@ class ItemController {
             quantity
         })
         .then(() => {
-            res.render('')
-        })
+                res.redirect('/items/add')
+         })
         .catch(err => {
             res.render('items/itemsError', {
                 message: err.message
@@ -45,7 +45,6 @@ class ItemController {
         const ItemId = req.params.id;
 
         Item.findByPk(ItemId)
-
         .then(item => {
             res.render('')
         })
