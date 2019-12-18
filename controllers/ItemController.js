@@ -5,20 +5,20 @@ const Item = require('../models').Item;
 class ItemController {
     static getItemsAll(req, res) {
         Item.findAll({})
-        .then(items => {
-            res.render('items', {
-                itemData : items
+            .then(items => {
+                res.render('items', {
+                    itemData: items
+                })
             })
-        })
-        .catch(err => {
-            res.render('items', {
-                message: err.message
+            .catch(err => {
+                res.render('items', {
+                    message: err.message
+                })
             })
-        })
     }
 
     static getItemsAdd(req, res) {
-        res.render('')
+        res.render('productAdd')
     }
 
     static postItemsAdd(req, res) {
@@ -31,29 +31,29 @@ class ItemController {
             price,
             quantity
         })
-        .then(() => {
-            res.render('')
-        })
-        .catch(err => {
-            res.send(err.message)
-        })
+            .then(() => {
+                res.render('')
+            })
+            .catch(err => {
+                res.send(err.message)
+            })
     }
 
     static getItemsEdit(req, res) {
         const ItemId = req.params.id;
 
         Item.findByPk(ItemId)
-        .then(item => {
-            res.render('')
-        })
+            .then(item => {
+                res.render('')
+            })
     }
 
     static postItemEdit(req, res) {
         const ItemId = req.params.id;
         let update = {};
 
-        for(let key in req.body) {
-            if(req.body[key].length > 0) {
+        for (let key in req.body) {
+            if (req.body[key].length > 0) {
                 update[key] = req.body[key]
             }
         }
@@ -63,12 +63,12 @@ class ItemController {
                 id: Itemid
             }
         })
-        .then(() => {
-            res.redirect('/items')
-        })
-        .catch(err => {
-            res.send(err.message)
-        })
+            .then(() => {
+                res.redirect('/items')
+            })
+            .catch(err => {
+                res.send(err.message)
+            })
     }
 
     static getItemDelete() {
@@ -79,12 +79,12 @@ class ItemController {
                 id: ItemId
             }
         })
-        .then(() => {
-            res.redirect('/items')
-        })
-        .catch(err => {
-            res.send(err.message)
-        })
+            .then(() => {
+                res.redirect('/items')
+            })
+            .catch(err => {
+                res.send(err.message)
+            })
     }
 
     static findOne() {
