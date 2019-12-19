@@ -134,20 +134,20 @@ class UserController {
                 username
             }
         })
-            .then(user => {
-                if (!user) {
-                    throw new Error('username/password wrong');
-                } else {
-                    hashPassword = user.password;
-                    if (checkPassword(password, hashPassword)) {
-                        req.session.userId = user.id;
-                        req.session.role = user.role;
-                        req.session.username = username;
-                        if (user.role == 'user') {
-                            next();
-                        } else {
-                            throw new Error('username/password wrong');
-                        }
+        .then(user => {
+            if(!user) {
+                throw new Error('username/password wrong');
+            } else {
+                hashPassword = user.password;
+                if(checkPassword(password, hashPassword)) {
+                    req.session.userId = user.id;
+                    req.session.role = user.role;
+                    req.session.username = username;
+                    if(user.role == 'user' || user.role == 'admin') {
+                        // next();
+                        return User.findAll()
+                    } else {
+                        throw new Error('username/password wrong');
                     }
                 }
             })
