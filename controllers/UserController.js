@@ -143,8 +143,9 @@ class UserController {
                     req.session.userId = user.id;
                     req.session.role = user.role;
                     req.session.username = username;
-                    if(user.role == 'user') {
-                        next();
+                    if(user.role == 'user' || user.role == 'admin') {
+                        // next();
+                        return User.findAll()
                     } else {
                         throw new Error('username/password wrong');
                     }
