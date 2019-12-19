@@ -261,6 +261,14 @@
             color: #3c97bf;
             text-decoration: none;
         }
+
+        select {
+            background-color: #eee;
+            border: none;
+            padding: 12px 15px;
+            margin: 8px 0;
+            width: 100%;
+        }
     </style>
 </head>
 
@@ -274,7 +282,11 @@
                 <input name="firstname" type="text" placeholder="Firstname" />
                 <input name="lastname" type="text" placeholder="Lastame" />
                 <input name="password" type="password" placeholder="password" />
-                <input name="role" type="text" placeholder="role" />
+                <input type="text">
+                <select name="role" id="role">
+                    <option value="admin">admin</option>
+                    <option value="customer">customer</option>
+                </select>
                 <input name="email" type="email" placeholder="Email" />
                 <button>Sign Up</button>
             </form>
@@ -284,8 +296,8 @@
         <div class="form-container sign-in-container">
             <form action="#">
                 <h1>Sign in</h1>
-                <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Password" />
+                <input name="username" type="username" placeholder="username" />
+                <input name="password" type="password" placeholder="Password" />
                 <a href="#">Forgot your password?</a>
                 <button>Sign In</button>
             </form>
