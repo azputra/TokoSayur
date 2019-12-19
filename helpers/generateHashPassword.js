@@ -1,11 +1,10 @@
 'use strict';
 
-const crypto = require('crypto');
+const bcrypt = require('bcrypt');
 
-function generateHashPassword(password, salt) {
-    return crypto.createHmac('sha256', salt)
-                 .update(password)
-                 .digest('hex')
+function generateHashPassword(password) {
+    let salt = 10;
+    return bcrypt.hashSync(password, salt);
 }
 
 module.exports = generateHashPassword;
