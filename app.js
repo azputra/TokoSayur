@@ -2,7 +2,7 @@
 
 const express = require('express')
 const app = express()
-let PORT = process.env.PORT || 3000; //port heroku
+let PORT = process.env.PORT || 4000; //port heroku
 const router = require('./routes')
 const bodyparser = require('body-parser')
 
