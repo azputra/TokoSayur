@@ -1,6 +1,9 @@
 'use strict';
 
 class OrderController {
+    static add(req, res) {
+        
+    }
 
 }
 
