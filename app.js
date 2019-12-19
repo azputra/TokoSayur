@@ -2,8 +2,9 @@
 
 const express = require('express')
 const app = express()
-let PORT = process.env.PORT || 3000; //port heroku
+let PORT = process.env.PORT || 4000; //port heroku
 const router = require('./routes')
+const bodyparser = require('body-parser')
 
 const checkPassword = require('./helpers/checkPassword');
 const generateHashPassword = require('./helpers/generateHashPassword');
@@ -13,6 +14,7 @@ const session = require('express-session');
 app.use(express.static("public"));
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+app.use(bodyparser.urlencoded({ extended: false }))
 
 app.use(session({
     secret: 'rahasia',
