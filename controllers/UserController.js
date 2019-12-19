@@ -104,18 +104,18 @@ class UserController {
     }
 
     static getLogin(req, res) {
-        if (!req.body){
+        if (!req.body) {
             res.redirect('/users/add');
         } else {
             Item.findAll()
-            .then(items => {
-                res.render('homeLogin', {username: req.session.username, items: items})
-            })
-            .catch(err => {
-                res.render('users/usersError', {
-                    message: err.message
+                .then(items => {
+                    res.render('homeLogin', { username: req.session.username, items: items })
                 })
-            })
+                .catch(err => {
+                    res.render('users/usersError', {
+                        message: err.message
+                    })
+                })
         }
     }
 
@@ -134,35 +134,35 @@ class UserController {
                 username
             }
         })
-        .then(user => {
-            if(!user) {
-                throw new Error('username/password wrong');
-            } else {
-                hashPassword = user.password;
-                if(checkPassword(password, hashPassword)) {
-                    req.session.userId = user.id;
-                    req.session.role = user.role;
-                    req.session.username = username;
-                    if(user.role == 'user') {
-                        next();
-                    } else {
-                        throw new Error('username/password wrong');
+            .then(user => {
+                if (!user) {
+                    throw new Error('username/password wrong');
+                } else {
+                    hashPassword = user.password;
+                    if (checkPassword(password, hashPassword)) {
+                        req.session.userId = user.id;
+                        req.session.role = user.role;
+                        req.session.username = username;
+                        if (user.role == 'user') {
+                            next();
+                        } else {
+                            throw new Error('username/password wrong');
+                        }
                     }
                 }
-            }
-        })
-        .then(usersData => {
-            users = usersData;
-            if(req.session.role == 'user') {
-                res.render('homeLogin', {username: req.session.username, items})
-            } else {
-                res.render('adminForm/tableUser', {users})
-            }
+            })
+            .then(usersData => {
+                users = usersData;
+                if (req.session.role == 'user') {
+                    res.render('homeLogin', { username: req.session.username, items })
+                } else {
+                    res.render('adminForm/tableUser', { users })
+                }
 
-        })
-        .catch(err => {
-            res.send(err.message)
-        })
+            })
+            .catch(err => {
+                res.send(err.message)
+            })
     }
 
     static logout(req, res) {
