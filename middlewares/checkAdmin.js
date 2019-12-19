@@ -1,0 +1,16 @@
+'use strict';
+
+function checkAdmin(req, res, next) {
+    if(req.session.role) {
+        if(req.session.role == 'admin') {
+            next();
+        } else {
+            req.session.destroy();
+            res.redirect('/users/signUp');
+        }
+    } else {
+        next()
+    }
+}
+
+module.exports = checkAdmin;
