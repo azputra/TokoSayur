@@ -35,6 +35,7 @@ Welcome to Toko Sayur. May you have enjoyable life.`
   });
   User.associate = function (models) {
     // associations can be defined here
+    // User.hasMany(models.Order)
     User.belongsToMany(models.Item, {through: models.Order})
   };
   return User;

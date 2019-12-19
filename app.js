@@ -13,8 +13,12 @@ const session = require('express-session');
 app.use(express.static("public"));
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+
 app.use(session({
-    secret: 'rahasia'
+    secret: 'rahasia',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }
 }))
 
 app.locals.checkPassword = checkPassword;

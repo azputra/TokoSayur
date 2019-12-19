@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
   });
   Item.associate = function (models) {
     // associations can be defined here
+    // Item.hasMany(models.Order);
     Item.belongsToMany(models.User, {through: models.Order})
   };
   return Item;
