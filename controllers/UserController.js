@@ -7,16 +7,16 @@ const checkPassword = require('../helpers/checkPassword');
 class UserController {
     static getUsersAll(req, res) {
         User.findAll({})
-        .then(users => {
-            res.render('./adminForm/tableUser', {
-                users
+            .then(users => {
+                res.render('./adminForm/tableUser', {
+                    users
+                })
             })
-        })
-        .catch(err => {
-            res.render('users/usersError', {
-                message: err.message
+            .catch(err => {
+                res.render('users/usersError', {
+                    message: err.message
+                })
             })
-        })
     }
 
     static getUsersAdd(req, res) {
@@ -37,27 +37,27 @@ class UserController {
             role,
             email
         })
-        .then(() => {
-            res.redirect('/users/add')
-        })
-        .catch(err => {
-            res.render('users/usersError', {
-                message: err.message
+            .then(() => {
+                res.redirect('/users/add')
             })
-        })
+            .catch(err => {
+                res.render('users/usersError', {
+                    message: err.message
+                })
+            })
     }
 
     static getUsersEdit(req, res) {
         const userId = req.params.id;
         User.findByPk(userId)
-        .then((user) => {
-            res.render('adminUser/userEdit', { user })
-        })
-        .catch(err => {
-            res.render('users/usersError', {
-                message: err.message
+            .then((user) => {
+                res.render('adminUser/userEdit', { user })
             })
-        })
+            .catch(err => {
+                res.render('users/usersError', {
+                    message: err.message
+                })
+            })
     }
 
     static postUsersEdit(req, res) {
@@ -75,14 +75,14 @@ class UserController {
                 id: userId
             }
         })
-        .then(() => {
-            res.redirect('/users/admin')
-        })
-        .catch(err => {
-            res.render('users/usersError', {
-                message: err.message
+            .then(() => {
+                res.redirect('/users/admin')
             })
-        })
+            .catch(err => {
+                res.render('users/usersError', {
+                    message: err.message
+                })
+            })
     }
 
     static getUsersDelete(req, res) {
@@ -93,14 +93,14 @@ class UserController {
                 id: userId
             }
         })
-        .then(() => {
-            res.redirect('/users/admin')
-        })
-        .catch(err => {
-            res.render('users/usersError', {
-                message: err.message
+            .then(() => {
+                res.redirect('/users/admin')
             })
-        })
+            .catch(err => {
+                res.render('users/usersError', {
+                    message: err.message
+                })
+            })
     }
 
     static getLogin(req, res) {
@@ -146,10 +146,8 @@ class UserController {
                     if(user.role == 'user') {
                         next();
                     } else {
-                        return User.findAll()
+                        throw new Error('username/password wrong');
                     }
-                } else {
-                    throw new Error('username/password wrong');
                 }
             }
         })
