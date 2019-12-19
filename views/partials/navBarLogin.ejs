@@ -3,7 +3,7 @@
         <!-- <div class="container"> -->
         <a class="navbar-brand font-weight-bold" style="color: rgb(117, 246, 11); text-shadow: 2px 2px 5px black"
             href="/home">Toko Sayur</a>
-        <%=req.session.username%>
+        <%=username%>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -28,7 +28,7 @@
                     <i class="fas fa-bell mr-3"></i>
                 </h5>
             </div>
-            <a href="/">
+            <a href="/users/logout">
                 <button type="button" class="btn btn-danger">Logout</button>
             </a>
         </div>

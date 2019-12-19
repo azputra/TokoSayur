@@ -6,9 +6,17 @@ module.exports = (sequelize, DataTypes) => {
   class Order extends Model { }
 
   Order.init({
-    CustomerId: DataTypes.INTEGER,
-    ItemId: DataTypes.INTEGER
+    UserId: DataTypes.INTEGER,
+    ItemId: DataTypes.INTEGER,
+    quantity: DataTypes.INTEGER,
+    totalPrice: DataTypes.INTEGER,
+    status: DataTypes.STRING
   }, {
+    hooks: {
+      beforeCreate: (order) => {
+         order.status = 'process'
+      }
+    },
     sequelize
   });
   Order.associate = function (models) {
