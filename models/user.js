@@ -1,6 +1,5 @@
 'use strict';
 
-const generateSalt = require('../helpers/generateSalt');
 const generateHashPassword = require('../helpers/generateHashPassword');
 const sendMail = require('../helpers/sendMail');
 
@@ -20,9 +19,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     hooks: {
       beforeCreate: (user) => {
-         let salt = generateSalt();
-         user.setDataValue('salt', salt);
-         user.setDataValue('password', generateHashPassword(user.password, salt));
+         user.setDataValue('password', generateHashPassword(user.password));
+
          let randomNumber = Math.floor(Math.random() * 1000) + 1;
          user.username = user.firstname + user.lastname + randomNumber;
       },

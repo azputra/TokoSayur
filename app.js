@@ -5,15 +5,19 @@ const app = express()
 let PORT = process.env.PORT || 3000; //port heroku
 const router = require('./routes')
 
-const generateSalt = require('./helpers/generateSalt');
+const checkPassword = require('./helpers/checkPassword');
 const generateHashPassword = require('./helpers/generateHashPassword');
 const sendMail = require('./helpers/sendMail');
+const session = require('express-session');
 
 app.use(express.static("public"));
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+app.use(session({
+    secret: 'rahasia'
+}))
 
-app.locals.generateSalt = generateSalt;
+app.locals.checkPassword = checkPassword;
 app.locals.generateHashPassword = generateHashPassword;
 app.locals.sendMail = sendMail;
 
