@@ -6,7 +6,7 @@ function checkAdmin(req, res, next) {
             next();
         } else {
             req.session.destroy();
-            res.redirect('/users/signUp');
+            res.redirect('/users/add');
         }
     } else {
         next()

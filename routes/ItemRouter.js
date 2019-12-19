@@ -8,9 +8,9 @@ const checkAdmin = require('../middlewares/checkAdmin')
 router.get('/admin', checkAdmin, ItemController.getItemsAll);
 router.get('/add', checkAdmin, ItemController.getItemsAdd);
 router.post('/add', checkAdmin, ItemController.postItemsAdd);
-router.get('/edit/:id', ItemController.getItemsEdit);
-router.post('/edit/:id', ItemController.postItemsEdit);
-router.get('/delete/:id', ItemController.getItemsDelete);
+router.get('/edit/:id', checkAdmin, ItemController.getItemsEdit);
+router.post('/edit/:id', checkAdmin, ItemController.postItemsEdit);
+router.get('/delete/:id', checkAdmin, ItemController.getItemsDelete);
 
 
 module.exports = router;
