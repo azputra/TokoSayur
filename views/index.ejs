@@ -76,15 +76,14 @@
         </div>
 
         <div class="row mt-4">
+            <%items.forEach(item => {%>
             <div class="col-3">
                 <div class="card">
                     <img src="https://assets-a2.kompasiana.com/statics/crawl/553003bd0423bdee288b4567.jpeg?t=o&v=350"
-                        class="card-img-top" alt="brocoli">
+                        class="card-img-top" alt="">
                     <div class="card-body">
-                        <p>id</p>
-                        <p></p>
-                        <h5 class="card-title">Brocoli</h5>
-                        <p class="card-text">Sayur segar Brocoli</p>
+                        <h5 class="card-title"><%=item.itemName%></h5>
+                        <p class="card-text">Sayur segar <%=item.itemName%></p>
                         <i class="fas fa-star text-warning"></i>
                         <i class="fas fa-star text-warning"></i>
                         <i class="fas fa-star text-warning"></i>
@@ -92,11 +91,12 @@
                         <i class="far fa-star text-warning"></i>
                         <div class="detailProduct">
                             <a href="/orders/add" class="btn btn-primary">Detail</a>
-                            <a href="/users/add" class="btn btn-success">Rp.300.000</a>
+                            <a href="/users/add" class="btn btn-success"><%=item.formatPrice%></a>
                         </div>
                     </div>
                 </div>
             </div>
+            <%})%>
         </div>
 
         <!-- Optional JavaScript -->
